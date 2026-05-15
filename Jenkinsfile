@@ -14,9 +14,11 @@ pipeline {
                     sh "sudo apt install openjdk-17-jdk maven -y"
                 }
             }
+            
+
                 stage('build'){
                     steps{
-                        sh "$CHOICES"
+                        echo "Choice: ${params.CHOICES}"
                     }
                 }
             }
