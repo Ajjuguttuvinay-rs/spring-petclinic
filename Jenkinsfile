@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    tools {
+        jdk "java17"
+        maven "maven 12"
+    }
 
     triggers { 
         pollSCM('* * * * *')
@@ -8,10 +12,9 @@ pipeline {
     
     
         stages {
-            stage('update and install'){
+            stage('update'){
                 steps{
                     sh "sudo apt update"
-                    sh "sudo apt install openjdk-17-jdk maven -y"
                 }
             }
             
