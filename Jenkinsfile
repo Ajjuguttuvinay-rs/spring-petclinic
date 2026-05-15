@@ -4,6 +4,7 @@ pipeline {
     triggers { 
         pollSCM('* * * * *')
     }
+    parameters { choice(name: 'CHOICES', choices: ['validate', 'clean', 'package'], description: 'my choices') }
     
     
         stages {
@@ -21,9 +22,7 @@ pipeline {
                 }
                 stage('build'){
                     steps{
-                        sh "mvn validate"
-                        sh "mvn clean"
-                        sh "mvn package"
+                        sh "$CHOICES"
                     }
                 }
             }
