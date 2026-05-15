@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label "node_1111"
+    }
     tools {
         jdk "java17"
         maven "maven 12"
